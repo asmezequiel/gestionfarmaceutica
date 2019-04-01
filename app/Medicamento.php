@@ -8,9 +8,9 @@ class Medicamento extends Model
 {
     protected $table = 'medicamentos';
 
-    protected $fillable = [ 'id' , 'codigo' , 'cant_blister' ];
+    protected $fillable = [ 'codigo' , 'cant_blister' ];
 
-    protected $hidden = [ 'perfil_medicamento_id' , 'created_at' , 'updated_at' , 'status' ];
+    protected $hidden = [ 'id' , 'perfil_medicamento_id' , 'created_at' , 'updated_at' , 'status' ];
 
     public function perfil(){
         return $this->belongsTo('App\PerfilMedicamento' , 'perfil_medicamento_id');

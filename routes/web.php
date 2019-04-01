@@ -27,15 +27,23 @@ Route::group(['prefix' => 'administracion' , 'middleware' => [/*'auth' , 'check.
 	
 	Route::resource('medicamentos', 'MedicamentosController')->names([
 	    'index' 	=> 'show.all.medicamento',
-	    'create' 	=> 'create.medicamento',
-	    'show'  	=> 'show.medicamento',
-	    'destroy' 	=> 'deshabilitar.medicamento' 
+	    'create' 	=> 'medicamento.create',
+	    'show'  	=> 'medicamento.show',
+	    'destroy' 	=> 'medicamento.deshabilitar' 
 	]);
+
+	Route::resource('movimientos', 'MovimientosController')->names([
+	    'index' 	=> 'show.all.movimientos',
+	    'create' 	=> 'movimientos.create',
+	    'show'  	=> 'movimientos.detalles.show',
+	    'destroy' 	=> 'movimientos.deshabilitar' 
+	]);
+
 	/*define('MEDICAMENTOS' 	, 'MedicamentosController@'); 	// MEDICAMENTOS = nombre del controlador de medicamentos
 	define('MOVIMIENTOS' 	, 'MovimientosController@'); 	// MOVIMIENTOS = nombre del controlador de movimientos
 	define('USUARIOS' 		, 'UsuariosController@'); 		// USUARIOS = nombre del controlador de usuarios
 
-    Route::get('/', MEDICAMENTOS . 'index')->name('index');
+    Route::get('/', MEDICAMENTOS . 'index')->name('index'); 
 
     Route::prefix('medicamento')->group(function () { //funciones que afectan a los medicamentos.
 	    Route::post('crear' 			, MEDICAMENTOS . 'crearNuevoMedicamento')	->name('crear.medicamento');

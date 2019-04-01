@@ -10,6 +10,7 @@ class MovimientoUsuario extends Model
 
     protected $primaryKey = 'num_movimiento';
     protected $fillable = [  'user_id' , 'medico_id' , 'cliente_id' , 'tipo_movimiento' , 'num_remito'];
+    protected $hidden   = [];
 
     public function detalle(){
     	return $this->hasMany('App\DetalleMovimiento' , 'num_movimiento' , 'num_movimiento');
@@ -25,5 +26,9 @@ class MovimientoUsuario extends Model
 
     public function usuario(){
     	return $this->belongsTo('App\User' , 'user_id');
+    }
+
+    public function getNumeroMovimiento(){
+        return $this->num_movimiento;
     }
 }

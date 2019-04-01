@@ -13,9 +13,9 @@ class DetalleMovimiento extends Model
 {
 	protected $table = 'detalle_movimientos';
 
-    protected $fillable = [ 'id', 'num_movimiento' , 'medicamento_id' , 'cant', ];
+    protected $fillable = [ 'cant' ];
 
-    protected $hidden = [];
+    protected $hidden = [ 'id' , 'created_at' , 'updated_at', 'num_movimiento' , 'medicamento_id' ];
 
     public function medicamento(){
         return $this->belongsTo('App\Medicamento');
