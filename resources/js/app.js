@@ -16,6 +16,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 
 Vue.use(BootstrapVue);
+//axios.defaults.baseURL = 'https://gestion-f.herokuapp.com/';
 
 //import index from "./components/index/Index.vue";
 

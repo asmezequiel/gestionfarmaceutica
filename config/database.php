@@ -58,11 +58,11 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => env('DB_HOST', 'ec2-23-21-106-241.compute-1.amazonaws.com'),
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => env('DB_DATABASE', 'dbqbef4vecod5i'),
+            'username' => env('DB_USERNAME', 'qemovngxtfvrkn'),
+            'password' => env('DB_PASSWORD', '17dadcc463100556230ada33382eda1a7d235e7585af7d28fb9dccfc74fa62d5'),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,

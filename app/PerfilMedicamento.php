@@ -10,9 +10,16 @@ class PerfilMedicamento extends Model
 
     protected $fillable = [ 'id' , 'nombre' , 'clasificacion'];
 
-    protected $hidden 	= [ 'created_at' , 'updated_at'];
+    protected $hidden 	= [ 'created_at' , 'updated_at' , 'status' ];
 
     public function medicamentos(){
     	return $this->hasMany('App\Medicamento');
+    }
+
+    public function crear( $nombre , $clasificacion ){
+    	$this->nombre 			= $nombre;
+    	$this->clasificacion	= $clasificacion;
+    	$this->save();
+    	return $this;
     }
 }
