@@ -18,11 +18,14 @@ class CreateMovimientoUser extends Migration
             $table->unsignedInteger('user_id')->nullable();
             $table->unsignedInteger('medico_id')->nullable();
             $table->unsignedInteger('cliente_id')->nullable();
-            $table->enum( 'tipo_movimiento' , ['alta' , 'baja'] );
+            //$table->enum( 'tipo_movimiento' , ['alta' , 'baja'] );
+            $table->string('tipo_movimiento')->nullable();
+            $table->string('detalle_tipo_movimiento')->nullable();
+            //$table->enum( 'detalle_tipo_movimiento' , ['clearing' , 'entrega_cliente' , 'vencimiento' , 'recibimiento_medicamento']);
 
-            $table->enum( 'detalle_tipo_movimiento' , ['clearing' , 'entrega_cliente' , 'vencimiento' , 'recibimiento_medicamento']);
-
-            $table->enum( 'empresa' , ['remediar' , 'caminal']);
+            //$table->enum( 'empresa' , ['remediar' , 'caminal']);            
+            $table->integer('empresa')->nullable();
+            
             $table->unsignedInteger('institucion_externa_id')->nullable(); 
             $table->integer('num_remito')->nullable();  
             $table->unsignedInteger('proveedor_id')->nullable();

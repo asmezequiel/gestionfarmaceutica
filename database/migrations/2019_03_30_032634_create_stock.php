@@ -16,7 +16,8 @@ class CreateStock extends Migration
         Schema::create('stock', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('medicamento_id');
-            $table->enum('empresa' , ['remediar' , 'caminal']);
+            //$table->enum('empresa' , ['remediar' , 'caminal']);
+            $table->integer('empresa')->nullable();
             $table->integer('cant')->default(0);
             $table->string('lote');
             $table->date('fecha_vencimiento')->format('d.m.Y');

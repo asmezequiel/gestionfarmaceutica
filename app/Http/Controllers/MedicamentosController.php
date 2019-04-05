@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\NuevoMedicamentoRequest;
 
-use App\Perfil;
+use App\PerfilMedicamento;
 use App\Medicamento;
 
 class MedicamentosController extends Controller
@@ -25,28 +25,50 @@ class MedicamentosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(NuevoMedicamentoRequest $request){     
+    public function create(){     
         
-        $perfilMedicamento  = Perfil::find( $request->input('perfil_medicamento_id') );
-        $descripcion        = $request->input('descripcion');
-        $codigo             = $request->input('codigo');
-        $cant_blister       = $request->input('cant_blister');
-
-        $nuevoMedicamento   = new Medicamento();
-        $nuevoMedicamento->crear( $perfilMedicamento , $descripcion , $codigo , $cant_blister );
-
-        return response()->json([ Medicamento::with('perfil')->latest()->first() ]);
+        
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Almacena un nuevo medicamento.
+     * Crea el perfil en caso de no existir.
+     * los datos que nos llegan son:
+     * PERFIL       : { nombre , clasificacion }
+     * MEDICAMENTO  : { cant_blister , codigo , descripcion }
+     * ambos del tipo objeto(json)
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response NuevoMedicamentoRequest
      */
-    public function store()
-    {
+    public function store(Request $request){
 
+        try {
+            $nombre         = $request->input('nombre');
+            $clasificacion  = $request->input('clasificacion');
+            $descripcion    = $request->input('descripcion');
+            $codigo         = $request->input('codigo');
+            $cant_blister   = $request->input('cant_blister');
+
+
+            $perfil = PerfilMedicamento::where('nombre' , 'like' , '%' . $nombre . '%')
+                        ->orWhere( 'clasificacion' , 'like' , '%' . $clasificacion . '%')
+                        ->first();
+            
+            if (!$perfil) {
+                $perfil = new PerfilMedicamento();
+                $perfil->crear( $nombre , $clasificacion);
+            }
+            
+            $nuevoMedicamento   = new Medicamento();
+            $nuevoMedicamento->crear( $perfil , $descripcion , $codigo , $cant_blister );
+            $nuevoMedicamento->perfil;
+            return response()->json([   'success'           => true ,
+                                        'mensaje'           => 'Medicamento creado con exito.',    
+                                        'medicamento'       => $nuevoMedicamento,]);
+        } catch (\Exception $e) {
+           return $e->getMessage();     
+        }
     }
 
     /**
