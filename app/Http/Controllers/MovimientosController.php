@@ -44,7 +44,7 @@ class MovimientosController extends Controller
 
                 $detalle        = new DetalleMovimiento();
                 $medicamento    = Medicamento::find( $detalle->medicamento_id );
-                $cant           = $detalle->cant,
+                $cant           = $detalle->cant;
                 $detalle->crear(    $movimiento->getNumeroMovimiento(),
                                     $medicamento,
                                     $cant );

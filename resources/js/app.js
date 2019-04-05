@@ -16,6 +16,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 
 Vue.use(BootstrapVue);
+
 //import index from "./components/index/Index.vue";
 
 import Dashboard from './components/Admin/Dashboard';

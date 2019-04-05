@@ -1,16 +1,16 @@
 <template>
-	<div id="contenido" class="container-fluid w-100">
+	<div id="contenido" class="d-flex w-100">
 		<div id="content-wrapper" class="d-flex flex-column">
 
 
-	      	<div id="content">
+	      	<div id="content" style="height: 93vh;">
 				<!-- Topbar -->
 				<nav-bar/>
 				<slot></slot>
 			</div>
 				
 
-			<custom-footer/>
+			<!--custom-footer/-->
     	</div>
 	</div>
 </template>

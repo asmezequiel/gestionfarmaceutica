@@ -28,14 +28,12 @@ class MedicamentosController extends Controller
     public function create(NuevoMedicamentoRequest $request){     
         
         $perfilMedicamento  = Perfil::find( $request->input('perfil_medicamento_id') );
+        $descripcion        = $request->input('descripcion');
         $codigo             = $request->input('codigo');
         $cant_blister       = $request->input('cant_blister');
 
         $nuevoMedicamento   = new Medicamento();
-        $nuevoMedicamento->perfil()->associate( $perfil_medicamento );
-        $nuevoMedicamento->codigo       = $codigo;
-        $nuevoMedicamento->cant_blister = $cant_blister;
-        $nuevoMedicamento->save();
+        $nuevoMedicamento->crear( $perfilMedicamento , $descripcion , $codigo , $cant_blister );
 
         return response()->json([ Medicamento::with('perfil')->latest()->first() ]);
     }

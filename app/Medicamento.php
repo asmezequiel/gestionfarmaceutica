@@ -8,7 +8,7 @@ class Medicamento extends Model
 {
     protected $table = 'medicamentos';
 
-    protected $fillable = [ 'codigo' , 'cant_blister' ];
+    protected $fillable = [ 'codigo' , 'descripcion' , 'cant_blister' ];
 
     protected $hidden = [ 'id' , 'perfil_medicamento_id' , 'created_at' , 'updated_at' , 'status' ];
 
@@ -20,8 +20,9 @@ class Medicamento extends Model
         return $this->hasOne('App\Stock');
     }
 
-    public function crear( $perfil_medicamento , $codigo , $cant_blister ){
+    public function crear( $perfil_medicamento , $descripcion , $codigo , $cant_blister ){
         $this->perfil()->associate( $perfil_medicamento );
+        $this->descripcion      = $descripcion;
         $this->codigo       = $codigo;
         $this->cant_blister = $cant_blister;
 
@@ -32,8 +33,9 @@ class Medicamento extends Model
         $this->status = false;
     }
 
-    public function actualizarDatos( $perfil_medicamento , $codigo , $cant_blister ){
+    public function actualizarDatos( $perfil_medicamento , $descripcion , $codigo , $cant_blister ){
         $this->perfil()->associate( $perfil_medicamento );
+        $this->descripcion      = $descripcion;
         $this->codigo           = $codigo;
         $this->cant_blister     = $cant_blister;
     	return $this->save();

@@ -8,7 +8,7 @@ class PerfilMedicamento extends Model
 {
     protected $table = 'perfil_medicamentos';
 
-    protected $fillable = [ 'id' , 'nombre' , 'descripcion' , 'clasificacion'];
+    protected $fillable = [ 'id' , 'nombre' , 'clasificacion'];
 
     protected $hidden 	= [ 'created_at' , 'updated_at'];
 

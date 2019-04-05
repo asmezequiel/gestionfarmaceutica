@@ -18,7 +18,13 @@ class MovimientosSeeder extends Seeder
 	        $movimiento->usuario()->associate( App\User::find(4) );	        
 	        $movimiento->medico()->associate( App\Medico::all()->random() );
 	        $movimiento->cliente()->associate( App\Cliente::all()->random() );
+	        
 	        $movimiento->tipo_movimiento = "baja";
+
+	        $movimiento->detalle_tipo_movimiento = "entrega_cliente";
+
+	        $movimiento->empresa = rand(1,2);
+	        
 	        $movimiento->save();
 
 

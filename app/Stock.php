@@ -8,7 +8,7 @@ class Stock extends Model
 {
     protected $table = 'stock';
 
-    protected $fillable = [ 'cant' , 'lote' ];
+    protected $fillable = [ 'empresa' , 'cant' , 'lote' , 'fecha_vencimiento'];
 
     protected $hidden = [ 'id' , 'medicamento_id' , 'created_at' , 'updated_at' ];
 

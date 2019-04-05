@@ -17,6 +17,7 @@ class CreateMedicamentos extends Migration
             $table->increments('id');
             $table->unsignedInteger('perfil_medicamento_id');
             $table->integer('codigo');
+            $table->string('descripcion');
             $table->integer('cant_blister');
             $table->boolean('status')->default(true);
             $table->timestamps();

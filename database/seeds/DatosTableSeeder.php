@@ -34,15 +34,6 @@ class DatosTableSeeder extends Seeder
         $rol4 = new Rol();
         $rol4->descripcion = "ayudante_farmaceutico";
         $rol4->save();
-        /*//
-        $rol5 = new Rol();
-        $rol5->descripcion = "medico";
-        $rol5->save();
-        //
-        $rol6 = new Rol();
-        $rol6->descripcion = "cliente";
-        $rol6->save();
-        */
 
 
 

@@ -26,6 +26,9 @@
     },
     "dependencies": {
         "animate.css": "^3.7.0",
-        "bootstrap-vue": "^2.0.0-rc.16"
+        "bootstrap-vue": "^2.0.0-rc.16",
+        "jspdf": "^1.5.3",
+        "jspdf-autotable": "^3.1.0",
+        "vue-router": "^3.0.2"
     }
 }
